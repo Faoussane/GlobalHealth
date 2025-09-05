@@ -58,6 +58,11 @@
             background-color: var(--light);
             line-height: 1.6;
             transition: all 0.3s ease;
+            padding: 0;
+            width: 100%;
+            margin: 0;
+            min-height: 200vh;
+            overflow-x: hidden;
         }
         
         /* Bouton de changement de thème */
@@ -186,7 +191,11 @@
             position: absolute;
             bottom: 20%;
             left: 10%;
-            width: 50%;
+            width: 80%; /* Largeur plus flexible */
+            max-width: 600px; /* Limite maximale pour éviter les débordements */
+            margin-left: auto;
+            margin-right: auto;
+            transform: translateX(0);
         }
         
         
@@ -194,7 +203,7 @@
         .g h1 {
             color: #ffffff;
             font-size: 2rem;
-            font-weight: 2rem;
+            font-weight: 700; /* Correction : font-weight n'accepte pas une valeur en rem */
             line-height: 1.2;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
@@ -228,6 +237,7 @@
         /* À propos */
         .about {
             background-color: var(--light);
+            width: 100%;
         }
         
         .about-content {
@@ -491,18 +501,19 @@
         .mission-card, .about-content, .vision-content {
             animation: fadeIn 1s ease-out;
         }
-        .container{
-                margin-top: 70px;
-            }
         
         /* Responsive */
         @media (max-width: 768px) {
             header {
-                height: 150px;
+                height: auto; /* Supprime la hauteur fixe */
+                padding: 1rem;
             }
             .header-container {
                 flex-direction: column;
                 text-align: center;
+            }
+            .logo {
+                margin-bottom: 1rem;
             }
             
             nav ul {
@@ -517,7 +528,7 @@
             }
             
             nav ul li {
-                margin: 0.5rem 1rem;
+                margin: 0.5rem .6rem;
             }
             
             .hero-content h1 {
@@ -542,27 +553,40 @@
                 right: 10px;
                 padding: 8px 12px;
                 font-size: 0.9rem;
+                z-index: 1500;
+            }
+            .g {
+                bottom: 10%; 
+                left: 10%;
+                width: 80%; 
+                max-width: 100%; 
+                max-height: 90%;
             }
             .g h1 {
-            color: #ffffff;
-            font-size: 1.2rem;
-            font-weight: 2rem;
-            line-height: 1.2;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        
-        .g p {
-            color: #ffffff;
-            font-size: .8rem;
-        }
+                font-size: 1.2rem;
+                text-align: start;
+
+            }
+            .g p {
+                font-size: 0.8rem; 
+                text-align: start;
+            }
+            .btn {
+                padding: 0.3rem 0.8rem; 
+                font-size: 0.9rem;
+            }
         .team-members {
             grid-template-columns: 1fr !important;
             width: 100%;
+            padding: 0 10px;
         }
         .member {
-            min-width: 450px;
             width: 100%;
-            max-width: 650px !important;
+            max-width: 100% !important;
+        }
+        .member img {
+            height: auto;
+            max-width: 100%;
         }
         }
         .logoImg{
@@ -575,6 +599,8 @@
             gap: 30px;
             margin-top: 20px;
             grid-template-columns: 33.33% 33.33% 33.33%;
+            max-width: 100%;
+            padding: 0 15px;
         }
 
         .member {
@@ -593,215 +619,222 @@
         border-radius: 12px;
         margin-bottom: 10px;
         }
+        .carou {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
  
     </style>
 </head>
 <body class="theme-1">
-    <!-- Bouton de changement de thème -->
-    <button class="theme-switcher" id="themeSwitcher">
-        <i class="fas fa-palette"></i>
-        <span>Changer de thème</span>
-    </button>
-    
-    <!-- Header -->
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <img src="./images/logo.png" class="logoImg" alt="">
-                <span>Global Health</span>
+    <div>
+        <!-- Bouton de changement de thème -->
+        <button class="theme-switcher" id="themeSwitcher">
+            <i class="fas fa-palette"></i>
+            <span>Changer de thème</span>
+        </button>
+        
+        <!-- Header -->
+        <header>
+            <div class="header-container">
+                <div class="logo">
+                    <img src="./images/logo.png" class="logoImg" alt="">
+                    <span>Global Health</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#about">À propos</a></li>
+                        <li><a href="#vision">Vision</a></li>
+                        <li><a href="#missions">Missions</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#about">À propos</a></li>
-                    <li><a href="#vision">Vision</a></li>
-                    <li><a href="#missions">Missions</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+        </header>
 
-    <!-- Carousel bostrap -->
-    <div class="carou" >
-        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active" data-bs-interval="10000">
-            <img src="./images/slid/slid1.jpg" class="d-block w-100" alt="...">
-                <div class="g">
-                    <div style="width: 100%;">
+        <!-- Carousel bostrap -->
+        <div class="carou" >
+            <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="10000">
+                <img src="./images/slid/slid1.jpg" class="d-block w-100" alt="...">
+                    <div class="g">
+                        <div style="width: 100%;">
+                            <h1>Un front fort et uni contre la drépanocytose</h1>
+                            <p>Ensemble, bâtissons un avenir sain et autonome pour chaque communauté</p>
+                            <a href="#contact" class="btn">Rejoignez-nous</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                <img src="./images/slid/slid2.jpg" class="d-block w-100" alt="...">
+                    <div class="g">
+                        <h1>Un front fort et uni contre la drépanocytose</h1>
+                        <p>Ensemble, bâtissons un avenir sain et autonome pour chaque communauté</p>
+                        <a href="#contact" class="btn">Rejoignez-nous</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                <img src="./images/slid/slid3.jpg" class="d-block w-100" alt="...">
+                    <div class="g">
                         <h1>Un front fort et uni contre la drépanocytose</h1>
                         <p>Ensemble, bâtissons un avenir sain et autonome pour chaque communauté</p>
                         <a href="#contact" class="btn">Rejoignez-nous</a>
                     </div>
                 </div>
             </div>
-            <div class="carousel-item" data-bs-interval="2000">
-            <img src="./images/slid/slid2.jpg" class="d-block w-100" alt="...">
-                <div class="g">
-                    <h1>Un front fort et uni contre la drépanocytose</h1>
-                    <p>Ensemble, bâtissons un avenir sain et autonome pour chaque communauté</p>
-                    <a href="#contact" class="btn">Rejoignez-nous</a>
-                </div>
-            </div>
-            <div class="carousel-item">
-            <img src="./images/slid/slid3.jpg" class="d-block w-100" alt="...">
-                <div class="g">
-                    <h1>Un front fort et uni contre la drépanocytose</h1>
-                    <p>Ensemble, bâtissons un avenir sain et autonome pour chaque communauté</p>
-                    <a href="#contact" class="btn">Rejoignez-nous</a>
-                </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-        </div>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <h2 class="section-title">À propos de Global Health</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p><i class="fas fa-plus-circle health-icon"></i>Global Health est une organisation engagée dans la lutte contre la drépanocytose, une maladie qui affecte de nombreuses vies. Avec une approche axée sur l'entraide, la solidarité et l'innovation, nous travaillons main dans la main avec les communautés pour un avenir meilleur.</p>
+                    <p><i class="fas fa-hands-helping health-icon"></i>Notre action se concentre sur la sensibilisation, la recherche des facteurs influents et la collaboration avec tous les acteurs concernés pour mettre en œuvre des solutions concrètes et durables.</p>
+                    <p><i class="fas fa-users health-icon"></i>Rejoignez-nous dans cette aventure ! Ensemble, nous pouvons faire la différence dans la lutte contre la drépanocytose.</p>
+                </div>
+                <div class="about-image">
+                    <img src="./images/global.jpg" alt="Équipe Global Health travaillant avec une communauté">
+                </div>
+            </div>
+            
+            <div class="illustration">
+                <i class="fas fa-stethoscope"></i>
+                <i class="fas fa-first-aid"></i>
+                <i class="fas fa-hospital-user"></i>
+                <i class="fas fa-clipboard-list"></i>
+            </div>
+        </section>
+
+        <!-- Vision Section -->
+        <section id="vision" class="vision">
+            <h2 class="section-title">Notre Vision</h2>
+            <div class="vision-content">
+                <blockquote>« Créer des approches intégrées et autonomes de lutte contre la drépanocytose, adaptées à chaque communauté. »</blockquote>
+                <p>Nous croyons en un monde où chaque communauté dispose des ressources et des connaissances nécessaires pour lutter efficacement contre la drépanocytose.</p>
+            </div>
+        </section>
+
+        <!-- Missions Section -->
+        <section id="missions" class="missions">
+            <h2 class="section-title">Nos Missions</h2>
+            <div class="missions-container">
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Sensibilisation</h3>
+                    <p>Sensibiliser les communautés sur la drépanocytose, ses causes, ses symptômes et sa prise en charge.</p>
+                </div>
+                
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Identification des facteurs</h3>
+                    <p>Identifier les facteurs sociaux, culturels et économiques qui influencent l'incidence de la drépanocytose.</p>
+                </div>
+                
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Collaboration</h3>
+                    <p>Collaborer avec les leaders communautaires, les écoles, les religieux et le système de santé pour mettre en œuvre des solutions concrètes et durables.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Membres -->
+        <section class="cta">
+            <div class="cta-content">
+                <h2 class="section-title">Notre Équipe</h2>
+                <p>Découvrez les membres passionnés qui portent la mission de Global Health.</p>
+                <div class="team-members">
+                    <div class="member">
+                        <img src="images/membr/m1.jpg" alt="Nom du membre">
+                        <h3>Dr. Nassif Sime Deguri</h3>
+                        <p>Médecin Praticien, Chargé de Projet & Speaker, Coordinateur du Projet Global Health Drépa.</p>
+                    </div>
+
+                    <div class="member">
+                        <img src="images/membr/m2.jpg" alt="Nom du membre">
+                        <h3>Yasmine Issifou</h3>
+                        <p>Épidémiologiste, Spécialiste en suivi-évaluation, Chargée du Suivi-évaluation du projet Global Health Drépa.</p>
+                    </div>
+
+                    <div class="member">
+                        <img src="images/membr/m3.jpg" alt="Nom du membre">
+                        <h3>Boni Koto Aquilas</h3>
+                        <p>Vidéaste - Motion Designer - Infographiste, Photographe & Chargé de Projet, Chargé de la programmation et de la formation du projet Global Health Drépa.</p>
+                    </div>
+                    <div class="member">
+                        <img src="images/membr/m4.jpg" alt="Nom du membre">
+                        <h3>Phrancklyn Mergellan Adjanou</h3>
+                        <p>Graphiste Designer & Chargé de Projet, Chargé de communication digitale du projet Global Health Drépa.</p>
+                    </div>
+                    <div class="member">
+                        <img src="images/membr/m5.jpg" alt="Nom du membre">
+                        <h3>Rebécca Bona Doué Yarou</h3>
+                        <p>Géographe, Chargée de la mobilisation sociale du projet Global Health Drépa.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="contact">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Global Health</h3>
+                    <p>Un front fort et uni contre la drépanocytose. Ensemble, bâtissons un avenir sain et autonome pour chaque communauté.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Liens rapides</h3>
+                    <ul>
+                        <li><a href="#about">À propos</a></li>
+                        <li><a href="#vision">Vision</a></li>
+                        <li><a href="#missions">Missions</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Parakou Rue de la Santé, Ville</p>
+                    <p><i class="fas fa-phone"></i> +229 </p>
+                    <p><i class="fas fa-envelope"></i> contact@globalhealth.org</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Global Health. Tous droits réservés.</p>
+            </div>
+        </footer>
     </div>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <h2 class="section-title">À propos de Global Health</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p><i class="fas fa-plus-circle health-icon"></i>Global Health est une organisation engagée dans la lutte contre la drépanocytose, une maladie qui affecte de nombreuses vies. Avec une approche axée sur l'entraide, la solidarité et l'innovation, nous travaillons main dans la main avec les communautés pour un avenir meilleur.</p>
-                <p><i class="fas fa-hands-helping health-icon"></i>Notre action se concentre sur la sensibilisation, la recherche des facteurs influents et la collaboration avec tous les acteurs concernés pour mettre en œuvre des solutions concrètes et durables.</p>
-                <p><i class="fas fa-users health-icon"></i>Rejoignez-nous dans cette aventure ! Ensemble, nous pouvons faire la différence dans la lutte contre la drépanocytose.</p>
-            </div>
-            <div class="about-image">
-                <img src="./images/global.jpg" alt="Équipe Global Health travaillant avec une communauté">
-            </div>
-        </div>
-        
-        <div class="illustration">
-            <i class="fas fa-stethoscope"></i>
-            <i class="fas fa-first-aid"></i>
-            <i class="fas fa-hospital-user"></i>
-            <i class="fas fa-clipboard-list"></i>
-        </div>
-    </section>
-
-    <!-- Vision Section -->
-    <section id="vision" class="vision">
-        <h2 class="section-title">Notre Vision</h2>
-        <div class="vision-content">
-            <blockquote>« Créer des approches intégrées et autonomes de lutte contre la drépanocytose, adaptées à chaque communauté. »</blockquote>
-            <p>Nous croyons en un monde où chaque communauté dispose des ressources et des connaissances nécessaires pour lutter efficacement contre la drépanocytose.</p>
-        </div>
-    </section>
-
-    <!-- Missions Section -->
-    <section id="missions" class="missions">
-        <h2 class="section-title">Nos Missions</h2>
-        <div class="missions-container">
-            <div class="mission-card">
-                <div class="mission-icon">
-                    <i class="fas fa-bullhorn"></i>
-                </div>
-                <h3>Sensibilisation</h3>
-                <p>Sensibiliser les communautés sur la drépanocytose, ses causes, ses symptômes et sa prise en charge.</p>
-            </div>
-            
-            <div class="mission-card">
-                <div class="mission-icon">
-                    <i class="fas fa-search"></i>
-                </div>
-                <h3>Identification des facteurs</h3>
-                <p>Identifier les facteurs sociaux, culturels et économiques qui influencent l'incidence de la drépanocytose.</p>
-            </div>
-            
-            <div class="mission-card">
-                <div class="mission-icon">
-                    <i class="fas fa-handshake"></i>
-                </div>
-                <h3>Collaboration</h3>
-                <p>Collaborer avec les leaders communautaires, les écoles, les religieux et le système de santé pour mettre en œuvre des solutions concrètes et durables.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Membres -->
-    <section class="cta">
-        <div class="cta-content">
-            <h2 class="section-title">Notre Équipe</h2>
-            <p>Découvrez les membres passionnés qui portent la mission de Global Health.</p>
-            <div class="team-members">
-                <div class="member">
-                    <img src="images/membr/m1.jpg" alt="Nom du membre">
-                    <h3>Dr. Nassif Sime Deguri</h3>
-                    <p>Médecin Praticien, Chargé de Projet & Speaker, Coordinateur du Projet Global Health Drépa.</p>
-                </div>
-
-                <div class="member">
-                    <img src="images/membr/m2.jpg" alt="Nom du membre">
-                    <h3>Yasmine Issifou</h3>
-                    <p>Épidémiologiste, Spécialiste en suivi-évaluation, Chargée du Suivi-évaluation du projet Global Health Drépa.</p>
-                </div>
-
-                <div class="member">
-                    <img src="images/membr/m3.jpg" alt="Nom du membre">
-                    <h3>Boni Koto Aquilas</h3>
-                    <p>Vidéaste - Motion Designer - Infographiste, Photographe & Chargé de Projet, Chargé de la programmation et de la formation du projet Global Health Drépa.</p>
-                </div>
-                <div class="member">
-                    <img src="images/membr/m4.jpg" alt="Nom du membre">
-                    <h3>Phrancklyn Mergellan Adjanou</h3>
-                    <p>Graphiste Designer & Chargé de Projet, Chargé de communication digitale du projet Global Health Drépa.</p>
-                </div>
-                <div class="member">
-                    <img src="images/membr/m5.jpg" alt="Nom du membre">
-                    <h3>Rebécca Bona Doué Yarou</h3>
-                    <p>Géographe, Chargée de la mobilisation sociale du projet Global Health Drépa.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="footer-container">
-            <div class="footer-col">
-                <h3>Global Health</h3>
-                <p>Un front fort et uni contre la drépanocytose. Ensemble, bâtissons un avenir sain et autonome pour chaque communauté.</p>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-            
-            <div class="footer-col">
-                <h3>Liens rapides</h3>
-                <ul>
-                    <li><a href="#about">À propos</a></li>
-                    <li><a href="#vision">Vision</a></li>
-                    <li><a href="#missions">Missions</a></li>
-                    <li><a href="#">Blog</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-col">
-                <h3>Contact</h3>
-                <p><i class="fas fa-map-marker-alt"></i> Parakou Rue de la Santé, Ville</p>
-                <p><i class="fas fa-phone"></i> +229 </p>
-                <p><i class="fas fa-envelope"></i> contact@globalhealth.org</p>
-            </div>
-        </div>
-        
-        <div class="copyright">
-            <p>&copy; 2023 Global Health. Tous droits réservés.</p>
-        </div>
-    </footer>
 
     <script>
         // Gestion du changement de thème
